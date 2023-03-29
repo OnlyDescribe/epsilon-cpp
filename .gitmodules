@@ -1,0 +1,12 @@
+[submodule "dep/thread_pool"]
+	path = dep/thread_pool
+	url = https://github.com/bshoshany/thread-pool.git
+[submodule "dep/Singular"]
+	path = dep/Singular
+	url = https://github.com/Singular/Singular.git
+[submodule "dep/json"]
+	path = dep/json
+	url = https://github.com/nlohmann/json.git
+[submodule "dep/tracy"]
+	path = dep/tracy
+	url = https://github.com/wolfpld/tracy.git

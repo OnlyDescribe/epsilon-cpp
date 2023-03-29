@@ -1,0 +1,40 @@
+CompileFlags: # Tweak the parse settings
+  # Treat code as C++, use C++17 standard, enable more warnings.
+  Add:
+    [-xc++, -std=c++17, -Wall, -Wno-missing-prototypes, 
+    -DHAVE_IOSTREAM, -DHAVE_RINGS, -DKINLINE,
+    -UNOSTREAMIO,-UNOASSERT,-USING_NDEBUG]
+    # - "--include-directory=factory/include"
+  # Remove extra warnings specified in compile commands.
+  # Remove: -mabi
+
+Diagnostics:
+  # Tweak Clang-Tidy checks.
+  ClangTidy:
+    Add: 
+    [performance*, modernize*, bugprone-*]
+    # [performance*, modernize*, readability*]
+    Remove: 
+    [modernize-use-trailing-return-type, 
+    bugprone-easily-swappable-parameters, bugprone-suspicious-include]
+    CheckOptions:
+      readability-identifier-naming.VariableCase: CamelCase
+
+#   UnusedIncludes: None
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+
+# Each file can contain multiple fragments separated by --- lines. (This is only useful if the fragments have different If conditions).
+# ---
+# # Use Remote Index Service for LLVM.
+# If:
+#   # Note: This is a regexp, notice '.*' at the end of PathMatch string.
+#   PathMatch: /path/to/llvm/.*
+
+# Index:
+# External:
+#   Server: clangd-index.llvm.org:5900
+#   MountPoint: /path/to/llvm/

@@ -1,0 +1,552 @@
+### Polynomial Systems: 50 Test Examples
+### Test examples used for RISC-Linz Series 91-52.0; Proc. IWMM'92: 89-100; 
+### Progress Math. 109: 301-328; JSC 16: 83-114; MCS 42: 339-351. 
+### (C) 2003 by Dongming Wang, LIP6-CNRS
+
+print(`50 test examples loaded: try P.i; X.i; i = 1..50`):
+
+# Example 1 from Wu (1987)
+f1 := expand((x12+x13)*(x13+x11)*(x11+x12)*x21^2*x22^2*x23^2):
+f2 := f1+expand(x101*(x21^2*x11-1)+x102*(x22^2*x12-1)+x103*(x23^2*x13-1)):
+P1 := [x10^2-f1,diff(f2,x11),diff(f2,x12),diff(f2,x13),diff(f2,x21),
+       diff(f2,x22),diff(f2,x23),diff(f2,x101),diff(f2,x102),diff(f2,x103)]:
+X1 := [x22, x21, x23, x12, x13, x11, x101, x102, x103, x10]:
+
+# Example 2: from Wu (1987)
+f1 := x21-x12-x13:
+f2 := x22-x11-x13:
+f3 := x23-x11-x12:
+f4 := x30-x11^3-x12^3-x13^3:
+f5 := x21*x22*x23-x10*x30:
+f6 := x10+expand(x101*f1+x102*f2+x103*f3+x104*f4+x105*f5):
+X2 := [x10,x11,x12,x13,x21,x22,x23,x30,x101,x102,x103,x104,x105]:
+P2 := [f1,f2,f3,f4,f5,diff(f6,x11),diff(f6,x12),diff(f6,x13),diff(f6,x21),
+       diff(f6,x22),diff(f6,x23),diff(f6,x30),diff(f6,x10)]:
+
+# Example 3 from Wu (1989)
+P3 := 
+{x10*x71-1+x19*x73*x71+x18*x73**2+x17*x73+x16*x72*x73+x15*x72*x71+x14*x72**2+  
+x13*x72+x12*x71**2*x73+x11*x71**2, x10*x80-2*x10+x19*x73*x80+x15*x72*x80+2*x12*
+x71*x73*x80+2*x11*x71*x80, x10*x71-x16*x72*x73*x80-x15*x72*x80*x71-2*x14*x72**2
+*x80-x13*x72*x80, 2*x10*x71-x19*x73*x80*x71-2*x18*x73**2*x80-x17*x73*x80-2*x16*
+x72*x73*x80-x15*x72*x80*x71-2*x14*x72**2*x80-x13*x72*x80-x12*x71**2*x73*x80}:
+X3 := [x71,x72,x73,x80]:
+
+# Example 4 from Wu (1989)
+F11 := S1*E12+C1*E11:
+F21 := S1*E22+C1*E21:
+F31 := S1*E32+C1*E31:
+F12 := -S1*E11+C1*E12:
+F22 := -S1*E21+C1*E22:
+F32 := -S1*E31+C1*E32:
+F41 := S1*E42+C1*E41-A1:
+F42 := -S1*E41+C1*E42+D23:
+F43 := E43-D1:
+
+p1 := C6*C5*C4+S6*S4-C23*F11-S23*E13:
+p2 := C6*C5*C4-S6*C4+F12:
+p3 := C6*S5+C23*E13-S23*F11:
+p4 := C6*S4-S6*C5*C4-C23*F21-S23*E23:
+p5 := -C6*C4-S6*C5*C4+F22:
+p6 := -S6*S5+C23*E23-S23*F21:
+p7 := S5*C4-C23*F31-S23*E33:
+p8 := S5*S4+F32:
+p9 := -C5+C23*E33-S23*F31:
+p10 := C3*A2+C5*C4*A5+C4*A4+S4*D5-C23*F41-S23*F43+A3:
+p11 := C5*S4*A5-C4*D5+S4*A4+F42:
+p12 := S3*A2+S5*A5+C23*F43-S23*F41+D4:
+p13 := C1^2+S1^2-1:
+p14 := C23^2+S23^2-1:
+p15 := C4^2+S4^2-1:
+p16 := C5^2+S5^2-1:
+p17 := C6^2+S6^2-1:
+p18 := C3^2+S3^2-1:
+
+X4 := [S1,C1,S23,C23,S4,C4,S5,C5,S6,C6,S3,C3]:
+P4 := [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18]:
+P4 := expand(P4):
+
+# Example 5 from Buchberger (1987)
+f1 := c1*c2-cf*ct*cp+sf*sp:
+f2 := s1*c2-sf*ct*cp-cf*sp:
+f3 := s2+st*cp:
+f4 := -c1*s2-cf*ct*sp+sf*cp:
+f5 := -s1*s2+sf*ct*sp-cf*cp:
+f6 := c2-st*sp:
+f7 := s1-cf*st:
+f8 := -c1-sf*st:
+f9 := ct:
+f10 := l2*c1*c2-px:
+f11 := l2*s1*c2-py:
+f12 := l2*s2+l1-pz:
+f13 := c1^2+s1^2-1:
+f14 := c2^2+s2^2-1:
+f15 := cf^2+sf^2-1:
+f16 := ct^2+st^2-1:
+f17 := cp^2+sp^2-1:
+X5 := [c1,c2,s1,s2,py,cf,ct,cp,sf,st,sp]:
+P5 := [f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17]:
+
+# Example 6 from Buchberger (1987)
+ee := 1:
+f1 := (x/a)^(2/ee)+(y/b)^(2/ee)+(z/c)^(2/ee)-1:
+f2 := (x-A1)+w*(x/a)^(2/ee-1)/(a*ee):
+f3 := (y-B1)+w*(y/b)^(2/ee-1)/(b*ee):
+f4 := (z-C1)+w*(z/c)^(2/ee-1)/(c*ee):
+X6 := [x,y,z,w]:
+P6 := [numer(simplify(f1)),numer(simplify(f2)),numer(simplify(f3)), 
+       numer(simplify(f4))]:
+
+# Example 7 from Buchberger (1987)
+ee := 1/2:
+f1 := (x/a)^(2/ee)+(y/b)^(2/ee)+(z/c)^(2/ee)-1:
+f2 := (x-A1)+w*(x/a)^(2/ee-1)/(a*ee):
+f3 := (y-B1)+w*(y/b)^(2/ee-1)/(b*ee):
+f4 := (z-C1)+w*(z/c)^(2/ee-1)/(c*ee):
+X7 := [x,y,z,w]:
+P7 := [numer(simplify(f1)),numer(simplify(f2)),numer(simplify(f3)),
+       numer(simplify(f4))]:
+
+# Example 8 from Buchberger (1987)
+f1 := x-r*t:
+f2 := y-r*t^2:
+f3 := z-r^2:
+X8 := [z,y,x,t,r]:
+P8 := [f1,f2,f3]:
+
+# Example 9 from Buchberger (1987)
+f1 := expand((x^2+y^2-1)*((x-1)^2+y^2-1)*((x+1)^2+y^2-1)*(x^2+(y-1)^2-1)):
+f2 := diff(f1,x):
+f3 := diff(f1,y):
+X9 := [y,x]:
+P9 := [f1,f2,f3]:
+
+# Example 10 from Bronstein (1986)
+f1 := a*x*y^2+b-c:
+f2 := d*x^2*y+e-f:
+X10 := [x,y]:
+P10 := [f1,f2]:
+
+# Example 11 from Bronstein (1986)
+f1 := x^2+y^2+z^2-r^2:
+f2 := z-x-y:
+f3 := x*y+z^2-1:
+X11 := [r,x,y,z]:
+P11 := [f1,f2,f3]:
+
+# Example 12 from Bronstein (1986)
+f1 := 2*y^2*(y^2+x^2)+(b^2-3*a^2)*y^2-2*b*y^2*(y+x)+2*a^2*b*(y+x)-a^2*x^2
+      +a^2*(a^2-b^2):
+f2 := 4*y^3+4*y*(y^2+x^2)-2*b*y^2-4*b*y*(y+x)+2*(b^2-3*a^2)*y+2*a^2*b:
+f3 := 4*x*y^2-2*b*y^2-2*a^2*x+2*a^2*b:
+X12 := [a,b,y,x]:
+P12 := [expand(f1),expand(f2),f3]:
+
+# Example 13 from Bronstein (1986)
+f1 := x^2+y^2-r^2:
+f2 := y-x^2-x-1:
+X13 := [r,x,y]:
+P13 := [f1,f2]:
+
+# Example 14 from Bronstein (1986)
+f1 := x^2+y^2+z^2-r^2:
+f2 := x*y+z^2-1:
+f3 := x*y*z-x^2-y^2-z+1:
+X14 := [r,x,y,z]:
+P14 := [f1,f2,f3]:
+
+# Example 15 from Czapor and Geddes (1986)
+f1 := 8*x^2-2*x*y-6*x*z+3*x+3*y^2-7*y*z+10*y+10*z^2-8*z-4:
+f2 := 10*x^2-2*x*y+6*x*z-6*x+9*y^2-y*z-4*y-2*z^2+5*z-9:
+f3 := 5*x^2+8*x*y+4*x*z+8*x+9*y^2-6*y*z+2*y-z^2-7*z+5:
+X15 := [z,y,x]:
+P15 := [f1,f2,f3]:
+
+# Example 16 from Czapor and Geddes (1986)
+f1 := 2*(b-1)^2+2*(q-p*q+p^2)+c^2*(q-1)^2-2*b*q+2*c*d*(1-q)*(q-p)
+      +2*b*p*d*(d-c)+b^2*d^2*(1-2*p)+2*b*d^2*(p-q)+2*b*d*c*(p-1)
+      +2*b*p*q*(c+1)+(b^2-2*b)*p^2*d^2+2*b^2*p^2+4*b*(1-b)*p+d^2*(p-q)^2:
+f2 := d*(2*p+1)*(q-p)+c*(p+2)*(1-q)+b*(b-2)*d+b*(1-2*b)*p*d
+      +b*c*(q+b-p*q-1)+b*(b+1)*p^2*d:
+f3 := -b^2*(p-1)^2+2*p*(p-q)-2*(q-1):
+f4 := b^2+4*(p-q^2)+3*c^2*(q-1)^2-3*d^2*(p-q)^2
+      +3*b^2*d^2*(p-1)^2+b^2*p*(p-2)+6*b*d*c*(p+q+p*q-1):
+X16 := [d,p,c,q]:
+P16 := [subs(b=2,expand(f1)),subs(b=2,expand(f2)),
+subs(b=2,expand(f3)),subs(b=2,expand(f4))]:
+
+# Example 17 from Czapor and Geddes (1986) 
+f1 := 2*(b-1)^2+2*(q-p*q+p^2)+c^2*(q-1)^2-2*b*q+2*c*d*(1-q)*(q-p)
+      +2*b*p*q*d*(d-c)+b^2*d^2*(1-2*p)+2*b*d^2*(p-q)+2*b*d*c*(p-1)
+      +2*b*p*q*(c+1)+(b^2-2*b)*p^2*d^2+2*b^2*p^2+4*b*(1-b)*p+d^2*(p-q)^2:
+f2 := d*(2*p+1)*(q-p)+c*(p+2)*(1-q)+b*(b-2)*d+b*(1-2*b)*p*d
+      +b*c*(q+p-p*q-1)+b*(b+1)*p^2*d:
+f3 := -b^2*(p-1)^2+2*p*(p-q)-2*(q-1):
+f4 := b^2+4*(p-q^2)+3*c^2*(q-1)^2-3*d^2*(p-q)^2
+      +3*b^2*d^2*(p-1)^2+b^2*p*(p-2)+6*b*d*c*(p+q+p*q-1):
+X17 := [p,d,c,q]:
+P17 := [expand(f1),expand(f2),expand(f3),expand(f4)]:
+
+# Example 18 from Czapor and Geddes (1986)
+f1 := a*x^2+b*x*y+c*x+d*y^2+e*y+f:
+f2 := b*x^2+4*d*x*y+2*e*x+g*y^2+h*y+k:
+X18 := [y,x]:
+P18 := [f1,f2]:
+
+# Example 19 from Czapor and Geddes (1986)
+f1 := x^2+a*y*z+d*x+g:
+f2 := y^2+b*z*x+e*y+h:
+f3 := z^2+c*x*y+f*z+k:
+X19 := [x,y,z]:
+P19 := [f1,f2,f3]:
+
+# Example 20 from Traverso and Donati (1989)
+f1 := x+y+z+t:
+f2 := x*y+y*z+z*t+t*x:
+f3 := x*y*z+y*z*t+z*t*x+t*x*y:
+f4 := x*y*z*t+1:
+X20 := [t,z,y,x]:
+P20 := [f1,f2,f3,f4]:
+
+# Example 21 from Traverso and Donati (1989)
+f1 := x+y+z+t+u:
+f2 := x*y+y*z+z*t+t*u+u*x:
+f3 := x*y*z+y*z*t+z*t*u+t*u*x+u*x*y:
+f4 := x*y*z*t+y*z*t*u+z*t*u*x+t*u*x*y+u*x*y*z:
+f5 := x*y*z*t*u+1:
+X21 := [u,t,z,y,x]:
+P21 := [f1,f2,f3,f4,f5]:
+
+# Example 22 from Traverso and Donati (1989)
+f1 := x^2*y*z+x*y^2*z+x*y*z^2+x*y*z+x*y+x*z+y*z:
+f2 := x^2*y^2*z+x*y^2*z^2+x^2*y*z+x*y*z+y*z+x+z:
+f3 := x^2*y^2*z^2+x^2*y^2*z+x*y^2*z+x*y*z+x*z+z+1:
+X22 := [z,y,x]:
+P22 := [f1,f2,f3]:
+
+# Example 23 from from Traverso and Donati (1989)
+f1 := x*b-y*a:
+f2 := (x-1)*d-y*(c-1):
+f3 := b^2+a^2-r^2:
+f4 := (c-1)^2+d^2-s^2:
+f5 := (a-c)^2+(b-d)^2-t^2:
+X23 := [a,b,c,d,r,s,t,y,x]:
+P23 := [f1,expand(f2),f3,expand(f4),expand(f5)]:
+
+# Example 24 from from Traverso and Donati (1989)
+f1 := y^2*z+2*x*y*t-2*x-z:
+f2 := -x^3*z+4*x*y^2*z+4*x^2*y*t+2*y*t^3+4*x*z+4*z^2-10*y*t-10*t^2+2:
+f3 := 2*y*z*t+x*t^2-x-2*z:
+f4 := -x*z^3+4*y*z^2*t+4*x*z*t^2+2*y*t^3+4*x*z+4*z^2-10*y*t-10*t^2+2:
+P24 := [f1,f2,f3,f4]:
+X24 := [t,z,y,x]:
+
+# Example 25 from from Traverso and Donati (1989)
+f1 := x*(y+z+t)-a:
+f2 := y*(x+z+t)-b:
+f3 := z*(x+y+t)-c:
+f4 := t*(x+y+z)-d:
+X25 := [a,b,c,d,t,z,y,x]:
+P25 := [expand(f1),expand(f2),expand(f3),expand(f4)]:
+
+# Example 26 from from Traverso and Donati (1989)
+f1 := x^2+y^2+z^2:
+f2 := z*y*x:
+f3 := y^2*x^2+z^2*x^2+z^2*y^2:
+f4 := u^2+1/3*t^2:
+f5 := u^3-t^2*u:
+f6 := 2*x^2*u-y^2*u-z^2*u+y^2*t-z^2*t:
+f7 := -y^2*x^2*u-z^2*x^2*u+2*x^2*y^2*u-y^2*x^2*t+z^2*x^2*t:
+f8 := 2*x^2*u-y^2*u-z^2*u-2*y^2*t*u+2*z^2*t*u-2/3*x^2*t^2+1/3*y^2*t^2
+      +1/3*z^2*t^2:
+f9 := -y^2*x^2*u^2-z^2*x^2*u^2+2*z^2*y^2*u^2+2*y^2*x^2*t*u-2*z^2*x^2*t*u
+      +1/3*y^2*x^2*t^2+1/3*z^2*x^2*t^2-2/3*z^2*y^2*t^2:
+f10 := -3*y^2*x^4*t*u^2+3*z^2*x^4*t*u^2+3*y^4*x^2*t*u^2-3*z^4*x^2*t*u^2
+       -3*z^2*y^4*t*u^2+3*z^4*y^2*t*u^2+1/3*y^2*x^4*t^3-1/3*z^2*x^4*t^3
+       -1/3*y^4*x^2*t^3+1/3*z^4*x^2*t^3+1/3*z^2*y^4*t^3-1/3*z^4*y^2*t^3:
+X26 := [u,t,z,y,x]:
+P26 := [f1,f2,f3,numer(f4),f5,f6,numer(f7),numer(f8),numer(f9),numer(f10)]:
+
+# Example 27 from from Traverso and Donati (1989)
+f1 := x+u+v-1:
+f2 := x+t+2*u-3:
+f3 := y+t+2*v-1:
+f4 := x-y-z-t-u-v:
+f5 := t*u*x^2-1569/31250*y*z^3:
+f6 := z*v-587/15625*y*t:
+X27 := [v,u,t,z,y,x]:
+P27 := [f1,f2,f3,f4,numer(f5),numer(f6)]:
+
+# Example 28 from from Traverso and Donati (1989)
+f1 := x^2-x-2*y^2+2*z^2+2*t^2:
+f2 := 2*x*y+2*y*z+2*z*t-y:
+f3 := 2*x*z+y^2+2*y*t-z:
+f4 := x+2*y+2*z+2*t-1:
+X28 := [t,z,y,x]:
+P28 := [f1,f2,f3,f4]:
+
+# Example 29 from from Traverso and Donati (1989)
+f1 := x^31-x^6-x-y:
+f2 := x^8-z:
+f3 := x^10-t:
+X29 := [t,z,y,x]:
+P29 := [f1,f2,f3]:
+
+# Example 30 from from Traverso and Donati (1989)
+f1 := -z^2*u+2*y*z*v-x*v^2-y^2*a+x*u*a+A^3:
+f2 := -z*t*u+y*t*v+y*z*w-x*v*w-y^2*b+x*u*b+B^3:
+f3 := -t^2*u+2*y*t*w-x*w^2-y^2*c+x*u*c+C^3:
+f4 := -z*t*v+z^2*w+y*t*a-x*w*a-y*z*b+x*v*b+D^3:
+f5 := -t^2*v+z*t*w+y*t*b-x*w*b-y*z*c+x*v*c+EE^3:
+f6 := -t*v^2+z*v*w+t*u*a-y*w*a-z*u*b+y*v*b+F^3:
+f7 := -t*v*w+z*w^2+t*u*b-y*w*b-z*u*c+y*v*c+G^3:
+f8 := -t^2*a+2*z*t*b-x*b^2-z^2*c+x*a*c+H^3:
+f9 := -t*w*a+t*v*b+z*w*b-y*b^2-z*v*c+y*a*c+II^3:
+f10 := -w^2*a+2*v*w*b-u*b^2-v^2*c+u*a*c+J^3:
+P30 := {f1,f2,f3,f4,f5,f6,f7,f8,f9,f10}:
+X30 := [a,b,c,w,v,u,t,z,y,x]:
+
+# Example 31 from from Traverso and Donati (1989)
+f1 := x^3*y^2+4*x^2*y^2*z-x^2*y*z^2+288*x^2*y^2+207*x^2*y*z+1152*x*y^2*z+156*
+      x*y*z^2+x*z^3-3456*x^2*y+20736*x*y^2+19008*x*y*z+82944*y^2*z+432*x*z^2-
+      497664*x*y+62208*x*z+2985984*x:
+f2 := x^3*t^3+4*y^3*t^2-y^2*z*t^2+4*y^2*t^3-48*y^2*t^2-5*y*z*t^2+108*y*z*t+
+      z^2*t+144*z*t-1728*z:
+f3 := x^2*z^2*t-4*x*z^2*t^2-z^3*t^2-x^3*z-156*x^2*z*t-207*x*z^2*t-1152*x*z*
+      t^2-288*z^2*t^2-432*x^2*z-19008*x*z*t+3456*z^2*t-82944*x*t^2-20736*z*t^2
+      -62208*x*z+497664*z*t-2985984*z:
+f4 := y^3*t^3-x*y^2*t^2+4*y^3*t^2+4*y^2*t^3-5*x*y^2*t-48*y^2*t^2+x^2*y+108*x*
+      y*t+144*x*y-1728*x:
+P31 := {f1,f2,f3,f4}:
+X31 := [t,z,y,x]:
+
+# Example 32 from Boege, Gebauer and Kredel (1986)
+f1 := c2-a21:
+f2 := c3-a31-a32:
+f3 := b1+b2+b3-1:
+f4 := numer(b2*c2+b3*c3-1/2):
+f5 := numer(b2*c2^2+b3*c3^2-1/3):
+f6 := numer(b3*a32*c2-1/6):
+X32 := [c3,c2,a31,a32,a21,b1,b2,b3]:
+P32 := [f1,f2,f3,f4,f5,f6]:
+
+# Example 33 from Boege, Gebauer and Kredel (1986)
+f1 := b1+b2+b3+b4-1:
+f2 := b2*c2+b3*c3+b4*c4-1/2:
+f3 := b2*c2^2+b3*c3^2+b4*c4^2-1/3:
+f4 := b3*a32*c2+b4*a42*c2+b4*a43*c3-1/6:
+f5 := b2*c2^3+b3*c3^3+b4*c4^3-1/4:
+f6 := b3*c3*a32*c2+b4*c4*a42*c2+b4*c4*a43*c3-1/8:
+f7 := b3*a32*c2^2+b4*a42*c2^2+b4*a43*c3^2-1/12:
+f8 := b4*a43*a32*c2-1/24:
+f9 := c2-a21:
+f10 := c3-a31-a32:
+f11 := c4-a41-a42-a43:
+X33 := [c2, c3, c4, b4, b3, b2, b1, a21, a31, a32, a41, a42, a43]:
+# X2 := [c4,c3,c2,a43,a42,a41,a32,a31,a21,b1,b2,b3,b4]:
+P33 := [f1,numer(f2),numer(f3),numer(f4),numer(f5),numer(f6),numer(f7),
+        numer(f8),f9,f10,f11]:
+
+# Example 34 from Boege, Gebauer and Kredel (1986)
+f1 := b2*c2+b3*c3+b4*c4+b5*c5-1/2:
+f2 := b2*c2^2+b3*c3^2+b4*c4^2+b5*c5^2-1/3:
+f3 := b3*a32*c2+b4*a42*c2+b4*a43*c3+b5*a52*c2+b5*a53*c3+b5*a54*c4-1/6:
+f4 := b2*c2^3+b3*c3^3+b4*c4^3+b5*c5^3-1/4:
+f5 := b3*c3*a32*c2+b4*c4*a42*c2+b4*c4*a43*c3+b5*c5*a52*c2+b5*c5*a53*c3
+      +b5*c5*a54*c4-1/8:
+f6 := b3*a32*c2^2+b4*a42*c2^2+b4*a43*c3^2+b5*a52*c2^2+b5*a53*c3^2+b5*a54*c4^2
+      -1/12:
+f7 := b4*a43*a32*c2+b5*a53*a32*c2+b5*a54*a42*c2+b5*a54*a43*c3-1/24:
+f8 := b2*c2^4+b3*c3^4+b4*c4^3+b5*c5^4-1/5:
+f9 := b3*c3^2*a32*c2+b4*c4^2*a42*c2+b4*c4^2*a43*c3+b5*c5^2*a52*c2
+      +b5*c5^2*a53*c3+b5*c5^2*a54*c4-1/10:
+f10 := b3*c2^2*a32*c3+b4*c2^2*a42*c4+b4*c3^2*a43*c4+b5*c2^2*a52*c2
+       +b5*c3^2*a53*c5+b5*c4^2*a54*c5-1/15:
+f11 := b4*c4*a43*a32*c2+b5*c5*a53*a32*c2+b5*c5*a54*a42*c2+b5*c5*a54*a43*c3
+       -1/30:
+f12 := b3*a32^2*c2^2+b4*a42^2*c2^2+2*b4*a42*c2*a43*c3+b4*a43^2*c3^2
+       +b5*a52^2*c2^2+b5*a53^2*c3^2+b5*a54^2*c4^2+2*b5*a52*c2*a53*c3
+       +2*b5*a52*c2*a54*c4+2*b5*a53*c3*a54*c4-1/20:
+f13 := b3*a32*c2^3+b4*a42*c2^3+b4*a43*c3^3+b5*a52*c2^3+b5*a53*c3^3
+       +b5*a54*c4^3-1/20:
+f14 := b4*a43*c3*a32*c2+b5*a53*c3*a32*c2+b5*a54*c4*a42*c2+b5*a54*c4*a43*c3
+       -1/40:
+f15 := b4*a43*a32*c2^2+b5*a53*a32*c2^2+b5*a54*a42*c2^2+b5*a54*a43*c3^2-1/60:
+f16 := b5*a54*a43*a32*c2-1/120:
+X34 := [c5,c3,c2,c4,a54,a53,a52,a43,a42,a32,b5,b4,b3,b2]:
+P34 := [numer(f1),numer(f2),numer(f3),numer(f4),numer(f5),numer(f6),
+        numer(f7),numer(f8),numer(f9),numer(f10),numer(f11),numer(f12),
+        numer(f13),numer(f14),numer(f15),numer(f16)]:
+
+# Example 35 from Butcher (1984)
+f1 := b1+b2+b3-(a+b):
+f2 := b2*c2+b3*c3-(1/2+1/2*b+b^2-a*b):
+f3 := b2*c2^2+b3*c3^2-(a*(1/3+b^2)-4/3*b-b^2-b^3):
+f4 := b3*a32*c2-(a*(1/6+1/2*b+b^2)-2/3*b-b^2-b^3):
+f5 := b2*c2^3+b3*c3^3-(1/4+1/4*b+5/2*b^2+3/2*b^3+b^4-a*(b+b^3)):
+f6 := b3*c3*a32*c2-(1/8+3/8*b+7/4*b^2+3/2*b^3+b^4-a*(1/2*b+1/2*b^2+b^3)):
+f7 := b3*a32*c2^2-(1/12+1/12*b+7/6*b^2+3/2*b^3+b^4-a*(2/3*b+b^2+b^3)):
+f8 := 1/24+7/24*b+13/12*b^2+3/2*b^3+b^4-a*(1/3*b+b^2+b^3):
+X35 := [b,c2,c3,a,b3,b2,a32,b1]:
+P35 := [numer(simplify(f1)),numer(simplify(f2)),numer(simplify(f3)),
+        numer(simplify(f4)),numer(simplify(f5)),numer(simplify(f6)),
+        numer(simplify(f7)),numer(simplify(f8))]:
+
+# Example 36 from Boege, Gebauer and Kredel (1986)
+f1 := u0^2-u0+2*u1^2:
+f2 := u0+2*u1-1:
+X36 := [u1,u0]:
+P36 := [f1,f2]:
+
+# Example 37 from Boege, Gebauer and Kredel (1986)
+f1 := u0^2-u0+2*u1^2+2*u2^2:
+f2 := 2*u0*u1+2*u1*u2-u1:
+f3 := u0+2*u1+2*u2-1:
+X37 := [u2,u1,u0]:
+P37 := [f1,f2,f3]:
+
+# Example 38 from Boege, Gebauer and Kredel (1986)
+f1 := u0^2-u0+2*u1^2+2*u2^2+2*u3^2:
+f2 := 2*u0*u1+2*u1*u2+2*u2*u3-u1:
+f3 := 2*u0*u2+u1^2+2*u1*u3-u2:
+f4 := u0+2*u1+2*u2+2*u3-1:
+X38 := [u3,u2,u1,u0]:
+P38 := [f1,f2,f3,f4]:
+
+# Example 39 from Boege, Gebauer and Kredel (1986)
+f1 := u0^2-u0+2*u1^2+2*u2^2+2*u3^2+2*u4^2:
+f2 := 2*u0*u1+2*u1*u2+2*u2*u3+2*u3*u4-u1:
+f3 := 2*u0*u2+u1^2+2*u1*u3+2*u2*u4-u2:
+f4 := 2*u0*u3+2*u1*u2+2*u1*u4-u3:
+f5 := u0+2*u1+2*u2+2*u3+2*u4-1:
+X39 := [u0,u1,u2,u3,u4]:
+P39 := [f1,f2,f3,f4,f5]:
+
+# Example 40 from Boege, Gebauer and Kredel (1986)
+f1 := u0^2-u0+2*u1^2+2*u2^2+2*u3^2+2*u4^2+2*u5^2:
+f2 := 2*u0*u1+2*u1*u2+2*u2*u3+2*u3*u4+2*u4*u5-u1:
+f3 := 2*u0*u2+u1^2+2*u1*u3+2*u2*u4+2*u3*u5-u2:
+f4 := 2*u0*u3+2*u1*u2+2*u1*u4+2*u2*u5-u3:
+f5 := 2*u0*u4+2*u1*u3+2*u1*u5+u2^2-u4:
+f6 := u0+2*u1+2*u2+2*u3+2*u4+2*u5-1:
+X40 := [u0,u1,u2,u3,u4,u5]:
+P40 := [f1,f2,f3,f4,f5,f6]:
+
+# Example 41 from Boege, Gebauer and Kredel (1986)
+f1 := L1*(L4-1/2*L5+L6):
+f2 := (2/7*L1^2-L4)*(-10*L1+5*L2-L3):
+f3 := (2/7*L1^2-L4)*(3*L4-L5+L6):
+f4 := (-2*L1^2+L1*L2+2*L1*L3-L2^2-7*L5+21*L6)*
+      (-3*L1+2*L2)+21*(7*L7-2*L1*L4+3/7*L1^3):
+f5 := (-2*L1^2+L1*L2+2*L1*L3-L2^2-7*L5+21*L6)*
+      (2*L4-2*L5)+(7*L7-2*L1*L4+3/7*L1^3)*(-45*L1+15*L2-3*L3):
+f6 := 2*(-2*L1^2+L1*L2+2*L1*L3-L2^2-7*L5+21*L6)*L7+
+      (7*L7-2*L1*L4+3/7*L1^3)*(12*L4-3*L5+2*L6):
+f7 := L1*(5*L1-3*L2+L3)*(2*L2-L1)+7*L1*(2*L6-4*L4):
+f8 := L1*(5*L1-3*L2+L3)*L3+7*L1*(2*L6-4*L4):
+f9 := L1*(5*L1-3*L2+L3)*(-2*L4-2*L5)+L1*(2*L6-4*L4)*(2*L2-8*L1)+
+      84*1/2*L1*L7:
+f10 := L1*(5*L1-3*L2+L3)*(8/3*L5+6*L6)+L1*(2*L6-4*L4)*
+       (11*L1-17/3*L2+5/3*L3)-168*1/2*L1*L7:
+f11 := 15*L7*L1*(5*L1-3*L2+L3)+L1*(2*L6-4*L4)*(5*L4-2*L5)+
+       1/2*L1*L7*(-120*L1+30*L2-6*L3):
+f12 := -3*L1*(5*L1-3*L2+L3)*L7+L1*(2*L6-4*L4)*(-1/2*L4+1/4*L5-1/2*L6)+
+       1/2*L1*L7*(24*L1-6*L2):
+f13 := 3*L1*(2*L6-4*L4)*L7+1/2*L1*L7*(40*L4-8*L5+4*L6):
+P41 := eval({'cat(f,i)' $ 'i'=1..13}):
+X41 := [L1,L2,L3,L4,L5,L6,L7]:
+
+# Example 42 from Boege, Gebauer and Kredel (1986)
+f1 := x4-(a4-a2):
+f2 := x1+x2+x3+x4-(a1+a3+a4):
+f3 := x1*x3+x1*x4+x2*x3+x3*x4-(a1*a4+a1*a3+a3*a4):
+f4 := x1*x3*x4-(a1*a3*a4):
+X42 := [x1,x2,x3,x4]:
+P42 := [f1,f2,f3,f4]:
+
+# Example 43 from Boege, Gebauer and Kredel (1986)
+f1 := u4^4-20/7*a46^2:
+f2 := a46^2*u3^4+7/10*a46*u3^4+7/48*u3^4-50/27*a46^2-35/27*a46-49/216:
+f3 := a46^5*u4^3+7/5*a46^4*u4^3+609/1000*a46^3*u4^3+49/1250*a46^2*u4^3
+       -27391/800000*a46*u4^3-1029/160000*u4^3+3/7*a46^5*u3*u4^2
+       +3/5*a46^6*u3*u4^2+63/200*a46^3*u3*u4^2+147/2000*a46^2*u3*u4^2
+       +4137/800000*a46*u3*u4^2-7/20*a46^4*u3^2*u4-77/125*a46^3*u3^2*u4
+       -23860/60000*a46^2*u3^2*u4-1078/9375*a46*u3^2*u4
+       -24353/1920000*u3^2*u4-3/20*a46^4*u3^3-21/100*a46^3*u3^3
+       -91/800*a46^2*u3^3-5887/200000*a46*u3^3-343/128000*u3^3:
+X43 := [a46,u4,u3]:
+P43 := [numer(f1),numer(f2),numer(f3)]:
+
+# Example 44 from Boege, Gebauer and Kredel (1986)
+f1 := A4*B4:
+f2 := A5*B1+B5+A4*B3+A3*B4:
+f3 := A2*B2:
+f4 := A5*B5:
+f5 := A0*B2+B2+A4*B2+A2*B4+C2+A2*B0+A2*B1:
+f6 := A0*B0+A0*B1+A0*B4+A3*B2+B0+B1+B4+A4*B0+A4*B1
+      +A2*B5+A4*B4+C1+C4+A5*B2+A2*B3+C0:
+f7 := A3*B0+A0*B3+A0*B5+A5*B0+B3+B5+A5*B4+A4*B3+
+      A4*B5+A3*B4+A5*B1+A3*B1+C3+C5-1:
+f8 := A5*B3+A5*B5+A3*B5+A3*B3:
+f9 := A5*B3+2*A5*B5+A3*B5:
+f10 := A0*B5+A5*B0+A3*B4+2*A5*B4+A5*B1+B5+A4*B3+2*A4*B5+C5:
+f11 := A4*B0+2*A4*B4+A2*B5+B4+A4*B1+A5*B2+A0*B4+C4:
+f12 := A2*B4+A4*B2:
+f13 := A4*B5+A5*B4:
+f14 := 2*A3*B3+A5*B3+A3*B5:
+f15 := C3+A0*B3+2*B3+B5+A4*B3+A3*B0+2*A3*B1+A5*B1+A3*B4:
+f16 := C1+A0*B1+2*B1+A4*B1+A2*B3+B0+A3*B2+B4:
+f17 := A2*B1+B2:
+f18 := A5*B3+A3*B5:
+f19 := B4+A4*B1:
+P44 := eval({'cat(f,i)' $ 'i'=1..19}):
+X44 := [C5,C4,C3,C2,C1,C0,B5,B4,B3,B2,B1,B0,A5,A4,A3,A2,A0]:
+
+# Example 45 from Trinks (1978)
+f1 := 45*p+35*s-165*b-36:
+f2 := 35*p+40*z+25*t-27*s:
+f3 := 15*w+25*p*s+30*z-18*t-165*b^2:
+f4 := -9*w+15*p*t+20*z*s:
+f5 := w*p+2*z*t-11*b^3:
+f6 := 99*w-11*s*b+3*b^2:
+X45 := [b,s,t,z,p,w]:
+P45 := [f1,f2,f3,f4,f5,f6]:
+
+
+# Example 46 from Trinks (1978)
+f1 := 45*p+35*s-165*b-36:
+f2 := 35*p+40*z+25*t-27*s:
+f3 := 15*w+25*p*s+30*z-18*t-165*b^2:
+f4 := -9*w+15*p*t+20*z*s:
+f5 := w*p+2*z*t-11*b^3:
+f6 := 99*w-11*s*b+3*b^2:
+f7 := numer(b^2+33/50*b+2673/10000):
+X46 := [b,s,t,z,p,w]:
+P46 := [f1,f2,f3,f4,f5,f6,f7]:
+
+# Example 47 from Wang (1993)
+f1 := (x-u)^2 + (y-v)^2 -1:     
+f2 := v^2 - u^3:                
+f3 := 2*v*(x-u) + 3*u^2*(y-v):  
+f4 := (3*w*u^2 - 1)*(2*w*v - 1):
+P47 := expand([f1,f2,f3,f4]):        
+X47 := [x,y,u,v,w]:                 
+
+# Example 48 from Wang (1989)
+f1 := y^2+a1*x*y+a3*y-x^3-a2*x^2-a4*x-a6:
+X48 := [a1,a2,a3,a4,a6,x,y]:
+P48 := [f1,diff(f1,x),diff(f1,y)]:
+
+# Example 49 from Wang (1989)
+f1 := x^4+x1*x^3+x2*x^2+x3*x+x4:
+f1 := resultant(f1,diff(f1,x),x):
+X49 := [x1,x2,x3,x4]:
+P49 := [f1,diff(f1,x1),diff(f1,x2),diff(f1,x3),diff(f1,x4)]:
+
+# Example 50 from Wang (1989)
+f1 := x^5+x1*x^4+x2*x^3+x3*x^2+x4*x+x5:
+f1 := resultant(f1,diff(f1,x),x):
+X50 := [x1,x2,x3,x4,x5]:
+P50 := [f1,diff(f1,x1),diff(f1,x2),diff(f1,x3),diff(f1,x4),diff(f1,x4)]:
+
+### End of file
